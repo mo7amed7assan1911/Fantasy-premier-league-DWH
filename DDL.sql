@@ -1,4 +1,3 @@
--- Active: 1719859538524@@127.0.0.1@5432@fpl_dwh@public
 CREATE TABLE gameweeks (
     id VARCHAR(255) PRIMARY KEY,
     GW_name VARCHAR(255),
