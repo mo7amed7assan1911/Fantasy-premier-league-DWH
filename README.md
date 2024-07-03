@@ -2,10 +2,9 @@
 
 
 This project creates a robust data warehouse for Fantasy Premier League data, leveraging modern data engineering tools and techniques. Whether you want to generate insightful reports or build predictive models, this project has you covered.
-
+![ETL Process](/Images/ETL%20Process.jpg)
 ### 🛠️ Technologies & Tools Used
 **Apache Spark**, **Mage**, **PostgreSQL**, **Data Warehousing**, **Data Modeling**, **ETL**
-
 
 ## 📈 Project Stages
 
