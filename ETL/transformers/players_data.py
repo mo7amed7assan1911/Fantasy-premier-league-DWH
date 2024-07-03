@@ -11,13 +11,8 @@ def transform(data, *args, **kwargs):
     spark = kwargs['spark']
     df = data[0]
     needed_columns = ['code', 'id', 'first_name', 'second_name',\
-                    'web_name', 'element_type', 'team', 'team_code', 'total_points',\
-                    'selected_by_percent', 'transfers_in', 'transfers_out', 'minutes',\
-                    'goals_scored', 'assists', 'clean_sheets',\
-                    'own_goals', 'penalties_saved', 'penalties_missed',
-                    'yellow_cards', 'red_cards', 'bonus', 'ict_index',
-                    'goals_conceded_per_90', 'form_rank', 'points_per_game_rank',\
-                    'selected_rank', 'dreamteam_count', 'news', 'points_per_game',
+                    'web_name', 'element_type', 'team', 'team_code',\
+                    'dreamteam_count', 'news',
                     ]
     
     df = df.loc[:, needed_columns]
@@ -29,12 +24,11 @@ def transform(data, *args, **kwargs):
         "element_type": str,
         "team": str,
         "team_code": str,
-        "selected_by_percent": float,
-        "ict_index": float,
-        "points_per_game": float
     }
-
+    df.insert(loc=2, column='full_name', value=df['first_name'] + " " + df['second_name'])
+    df.drop(columns=['first_name', 'second_name'], inplace=True)
     df = df.astype(conversion_map)
+    print(df.info())
     return df
 
 

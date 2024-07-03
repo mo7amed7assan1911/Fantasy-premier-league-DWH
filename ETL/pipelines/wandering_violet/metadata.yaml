@@ -20,21 +20,62 @@ blocks:
   uuid: ingesting_bootstrap_data
 - all_upstream_blocks_executed: true
   color: null
+  configuration:
+    file_path: transformers/players_data.py
+    file_source:
+      path: transformers/players_data.py
+  downstream_blocks:
+  - players_into_dwh
+  - player_statistics
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: players_data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - ingesting_bootstrap_data
+  uuid: players_data
+- all_upstream_blocks_executed: true
+  color: null
   configuration: {}
   downstream_blocks:
-  - players_statistics
+  - current_season_fact_table
   executor_config: null
   executor_type: local_python
   has_callback: false
   language: python
   name: Player_Statistics
   retry_config: null
-  status: not_executed
+  status: executed
   timeout: null
   type: data_loader
-  upstream_blocks: []
+  upstream_blocks:
+  - players_data
   uuid: player_statistics
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_path: transformers/current_season_fact_table.py
+    file_source:
+      path: transformers/current_season_fact_table.py
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: Current_season_fact_table
+  retry_config: null
+  status: updated
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - player_statistics
+  uuid: current_season_fact_table
+- all_upstream_blocks_executed: true
   color: null
   configuration: {}
   downstream_blocks: []
@@ -42,14 +83,14 @@ blocks:
   executor_type: local_python
   has_callback: false
   language: python
-  name: Players Statistics
+  name: players_into_dwh
   retry_config: null
-  status: not_executed
+  status: executed
   timeout: null
-  type: transformer
+  type: data_exporter
   upstream_blocks:
-  - player_statistics
-  uuid: players_statistics
+  - players_data
+  uuid: players_into_dwh
 - all_upstream_blocks_executed: true
   color: null
   configuration:
@@ -161,42 +202,6 @@ blocks:
   upstream_blocks:
   - gameweeks_data
   uuid: gameweeks_into_dwh
-- all_upstream_blocks_executed: true
-  color: null
-  configuration:
-    file_path: transformers/players_data.py
-    file_source:
-      path: transformers/players_data.py
-  downstream_blocks:
-  - players_into_dwh
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: python
-  name: players_data
-  retry_config: null
-  status: executed
-  timeout: null
-  type: transformer
-  upstream_blocks:
-  - ingesting_bootstrap_data
-  uuid: players_data
-- all_upstream_blocks_executed: true
-  color: null
-  configuration: {}
-  downstream_blocks: []
-  executor_config: null
-  executor_type: local_python
-  has_callback: false
-  language: python
-  name: players_into_dwh
-  retry_config: null
-  status: executed
-  timeout: null
-  type: data_exporter
-  upstream_blocks:
-  - players_data
-  uuid: players_into_dwh
 cache_block_output_in_memory: true
 callbacks: []
 concurrency_config: {}
