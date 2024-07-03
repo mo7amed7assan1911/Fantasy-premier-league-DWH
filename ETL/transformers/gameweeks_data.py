@@ -37,4 +37,4 @@ def transform(data, *args, **kwargs):
 
 @test
 def test_output(output, *args) -> None:
-    assert output is not None, 
+    assert output is not None, 'data is not defined'

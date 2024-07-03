@@ -35,13 +35,13 @@ blocks:
   language: python
   name: teams_data
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: transformer
   upstream_blocks:
   - extracting_players_teams_data
   uuid: teams_data
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration: {}
   downstream_blocks: []
@@ -51,7 +51,7 @@ blocks:
   language: python
   name: teams_into_dwh
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
@@ -71,13 +71,13 @@ blocks:
   language: python
   name: Positions_data
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: transformer
   upstream_blocks:
   - extracting_players_teams_data
   uuid: positions_data
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration:
     file_path: data_exporters/positions_into_dwh.py
@@ -90,7 +90,7 @@ blocks:
   language: python
   name: positions_into_dwh
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
@@ -110,13 +110,13 @@ blocks:
   language: python
   name: GameWeeks data
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: transformer
   upstream_blocks:
   - extracting_players_teams_data
   uuid: gameweeks_data
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration: {}
   downstream_blocks: []
@@ -126,7 +126,7 @@ blocks:
   language: python
   name: gameweeks_into_dwh
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
@@ -147,13 +147,13 @@ blocks:
   language: python
   name: players_data
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: transformer
   upstream_blocks:
   - extracting_players_teams_data
   uuid: players_data
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration: {}
   downstream_blocks:
@@ -171,7 +171,7 @@ blocks:
   upstream_blocks:
   - players_data
   uuid: player_statistics
-- all_upstream_blocks_executed: false
+- all_upstream_blocks_executed: true
   color: null
   configuration: {}
   downstream_blocks: []
@@ -181,7 +181,7 @@ blocks:
   language: python
   name: players_into_dwh
   retry_config: null
-  status: updated
+  status: executed
   timeout: null
   type: data_exporter
   upstream_blocks:
@@ -198,7 +198,7 @@ blocks:
   language: python
   name: player_history_data
   retry_config: null
-  status: executed
+  status: failed
   timeout: null
   type: transformer
   upstream_blocks:
@@ -267,7 +267,7 @@ executor_config: {}
 executor_count: 1
 executor_type: null
 extensions: {}
-name: wandering violet
+name: ETL for Fantasy Premier League
 notification_config: {}
 remote_variables_dir: null
 retry_config: {}
@@ -277,6 +277,6 @@ settings:
 spark_config: {}
 tags: []
 type: python
-uuid: wandering_violet
+uuid: etl_for_fantasy_premier_league
 variables_dir: /root/.mage_data/ETL
 widgets: []

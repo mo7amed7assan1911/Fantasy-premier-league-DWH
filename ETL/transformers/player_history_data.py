@@ -8,7 +8,7 @@ if 'test' not in globals():
 
 @transformer
 def transform(data, *args, **kwargs):
-    spark = kwargs['spark']
+    print(data)
     df = data[1]
     df = df.loc[:, :'bonus']
     df['element_code'] = df['element_code'].astype(str)

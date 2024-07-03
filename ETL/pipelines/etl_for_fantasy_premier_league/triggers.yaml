@@ -1,0 +1,15 @@
+triggers:
+- description: null
+  envs: []
+  last_enabled_at: 2024-07-03 12:04:53.632582
+  name: Every Game Week
+  pipeline_uuid: etl_for_fantasy_premier_league
+  schedule_interval: '@weekly'
+  schedule_type: time
+  settings:
+    landing_time_enabled: false
+  sla: null
+  start_time: 2024-08-16 12:04:00
+  status: active
+  token: 2eef682e3fe3413d803db5bb267b551a
+  variables: {}
