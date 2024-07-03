@@ -1,0 +1,223 @@
+blocks:
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - players_data
+  - gameweeks_data
+  - positions_data
+  - teams_data
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: Ingesting Bootstrap Data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: ingesting_bootstrap_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks:
+  - players_statistics
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: Player_Statistics
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: data_loader
+  upstream_blocks: []
+  uuid: player_statistics
+- all_upstream_blocks_executed: false
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: Players Statistics
+  retry_config: null
+  status: not_executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - player_statistics
+  uuid: players_statistics
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_path: transformers/teams_data.py
+    file_source:
+      path: transformers/teams_data.py
+  downstream_blocks:
+  - teams_into_dwh
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: teams_data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - ingesting_bootstrap_data
+  uuid: teams_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: teams_into_dwh
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - teams_data
+  uuid: teams_into_dwh
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_path: transformers/positions_data.py
+    file_source:
+      path: transformers/positions_data.py
+  downstream_blocks:
+  - positions_into_dwh
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: Positions_data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - ingesting_bootstrap_data
+  uuid: positions_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_path: data_exporters/positions_into_dwh.py
+    file_source:
+      path: data_exporters/positions_into_dwh.py
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: positions_into_dwh
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - positions_data
+  uuid: positions_into_dwh
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_path: transformers/gameweeks_data.py
+    file_source:
+      path: transformers/gameweeks_data.py
+  downstream_blocks:
+  - gameweeks_into_dwh
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: GameWeeks data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - ingesting_bootstrap_data
+  uuid: gameweeks_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: gameweeks_into_dwh
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - gameweeks_data
+  uuid: gameweeks_into_dwh
+- all_upstream_blocks_executed: true
+  color: null
+  configuration:
+    file_path: transformers/players_data.py
+    file_source:
+      path: transformers/players_data.py
+  downstream_blocks:
+  - players_into_dwh
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: players_data
+  retry_config: null
+  status: executed
+  timeout: null
+  type: transformer
+  upstream_blocks:
+  - ingesting_bootstrap_data
+  uuid: players_data
+- all_upstream_blocks_executed: true
+  color: null
+  configuration: {}
+  downstream_blocks: []
+  executor_config: null
+  executor_type: local_python
+  has_callback: false
+  language: python
+  name: players_into_dwh
+  retry_config: null
+  status: executed
+  timeout: null
+  type: data_exporter
+  upstream_blocks:
+  - players_data
+  uuid: players_into_dwh
+cache_block_output_in_memory: true
+callbacks: []
+concurrency_config: {}
+conditionals: []
+created_at: '2024-07-01 18:30:26.538683+00:00'
+data_integration: null
+description: null
+executor_config: {}
+executor_count: 1
+executor_type: null
+extensions: {}
+name: wandering violet
+notification_config: {}
+remote_variables_dir: null
+retry_config: {}
+run_pipeline_in_one_process: true
+settings:
+  triggers: null
+spark_config: {}
+tags: []
+type: python
+uuid: wandering_violet
+variables_dir: /root/.mage_data/ETL
+widgets: []

@@ -33,12 +33,12 @@ spark_config:
   spark_jars: []
   # Path where Spark is installed on worker nodes
   # e.g. spark_home: '/usr/lib/spark'
-  spark_home:
+  spark_home: null
   # List of key-value pairs to be set in SparkConf
   # e.g., others: {'spark.executor.memory': '4g', 'spark.executor.cores': '2'}
   others: {}
   # Whether to create custom SparkSession via code and set in kwargs['context']
-  use_custom_session: false
+  use_custom_session: true
   # The variable name to set in kwargs['context'],
   # e.g. kwargs['context']['spark'] = spark_session
   custom_session_var_name: 'spark'
