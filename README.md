@@ -3,14 +3,9 @@
 
 This project creates a robust data warehouse for Fantasy Premier League data, leveraging modern data engineering tools and techniques. Whether you want to generate insightful reports or build predictive models, this project has you covered.
 
-## 🌟 Key Features
+### 🛠️ Technologies & Tools Used
+**Apache Spark**, **Mage**, **PostgreSQL**, **Data Warehousing**, **Data Modeling**, **ETL**
 
-- **Dockerized Environment**: Easy setup with `docker-compose.yml`.
-- **ETL Pipeline**: Extract, transform, and load data using **Apache Spark**.
-- **Workflow Orchestration**: Automated and monitored with **Mage**.
-- **PostgreSQL Data Model**: Structured **Data Warehouse** to store and manage FPL data.
-
-- **Automated Scheduling**: Triggers to run the ETL pipeline each gameweek.
 
 ## 📈 Project Stages
 
