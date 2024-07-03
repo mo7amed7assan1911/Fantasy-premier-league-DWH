@@ -52,3 +52,6 @@ git clone https://github.com/yourusername/fpl-data-warehouse.git
 cd fpl-data-warehouse
 docker-compose up -d
 ```
+---
+## 🤝 Join Me
+I'm excited to make this an excellent resource for FPL enthusiasts and data analysts. If you have suggestions or want to contribute, please open an issue or submit a pull request. Let's collaborate to enhance this project!
