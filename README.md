@@ -34,6 +34,11 @@ Building the ETL pipeline using **Apache Spark** and orchestrating it with **Mag
 
 With this data warehouse, future enhancements can include:
 
+
+- **⚽ Match Data Analysis**: Use match data to provide detailed statistics for each match.
+
+- **📈 Team Performance Dashboard**: Develop features for fpl users to see their teams' performance statistics and insights.
+
 - **📊 Generate Reports**: Integrate with Power BI or Tableau to create insightful visualizations.
 - **🤖 Build Predictive Models**: Develop machine learning models to forecast player performance for upcoming gameweeks.
 
