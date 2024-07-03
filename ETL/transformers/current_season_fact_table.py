@@ -12,7 +12,6 @@ if 'test' not in globals():
 def transform(data, *args, **kwargs):
     spark = kwargs['spark']
     df = data[0]
-
     schema = StructType([
             StructField("element", StringType(), False),
             StructField("fixture", StringType(), False),
@@ -59,15 +58,14 @@ def transform(data, *args, **kwargs):
     for col in float_columns:
         spark_df = spark_df.withColumn(col, spark_df[col].cast(FloatType()))
 
-        
-    spark_df.printSchema()
+    spark_df = spark_df.withColumn('value', (spark_df.value / 10).cast(FloatType())).\
+                withColumnRenamed('round', 'GW').\
+                withColumnRenamed('value', 'price').\
+                withColumnRenamed('minutes', 'minutes_played')
 
-    return df
+    return spark_df.toPandas()
 
 
 @test
 def test_output(output, *args) -> None:
-    """
-    Template code for testing the output of the block.
-    """
     assert output is not None, 'The output is undefined'

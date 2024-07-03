@@ -9,10 +9,10 @@ if 'data_exporter' not in globals():
 
 
 @data_exporter
-def export_data_to_postgres(df, **kwargs) -> None:
+def export_data_to_postgres(df: DataFrame, **kwargs) -> None:
 
-    schema_name = 'public'
-    table_name = 'teams'
+    schema_name = 'public' 
+    table_name = 'player_history' 
     config_path = path.join(get_repo_path(), 'io_config.yaml')
     config_profile = 'dev'
 
@@ -21,6 +21,6 @@ def export_data_to_postgres(df, **kwargs) -> None:
             df,
             schema_name,
             table_name,
-            index=False, 
+            index=False,
             if_exists='replace',
         )

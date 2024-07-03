@@ -1,6 +1,8 @@
 import io
 import pandas as pd
 import requests
+import json
+
 if 'data_loader' not in globals():
     from mage_ai.data_preparation.decorators import data_loader
 if 'test' not in globals():
@@ -9,12 +11,13 @@ if 'test' not in globals():
 
 @data_loader
 def load_data_from_api(*args, **kwargs):
-    spark = kwargs.get('spark')
-    
-    rdd = spark.sparkContext.parallelize([1, 2, 3])
-    values = rdd.filter(lambda x: x > 2)
-    print(type(values.collect()))
-    return values.collect()
+    url = 'https://fantasy.premierleague.com/api/fixtures/'  # Correct URL for fixtures
+    response = requests.get(url)
+    data = json.loads(response.text)
+    fixtures_df = pd.DataFrame(data)
+
+    fixtures_df.drop(columns='stats', inplace=True)
+    return fixtures_df
 
 @test
 def test_output(output, *args) -> None:
