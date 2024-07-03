@@ -6,7 +6,7 @@ services:
     image: mage_spark  # Use the custom-built image name
     command: mage start ${PROJECT_NAME}
     env_file:
-      - .env
+      - Environment.env
     environment:
       USER_CODE_PATH: /home/src/${PROJECT_NAME}
       ENV: ${ENV}
